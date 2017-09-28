@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="description" content="Food & Beverages Careers">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>F&B Careers</title>
+<link rel="shortcut icon" href="img/favicon/favicon.ico">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="stylesheets/owl.carousel.css">
+<link rel="stylesheet" href="stylesheets/owl.theme.css">
+<link rel="stylesheet" href="stylesheets/animate.css">
+<link rel="stylesheet" href="stylesheets/jquery.datetimepicker.css">
+<link rel="stylesheet" href="stylesheets/prettyPhoto.css">
+<link rel="stylesheet" href="stylesheets/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/select2.min.css"/>
+<link rel="stylesheet" type="text/css" href="stylesheets/select2-bootstrap.min.css"/>
+<link href="fonts/fonts.css" rel="stylesheet">
+<link href="stylesheets/main.css" rel="stylesheet">
+<link href="stylesheets/main-responsive.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body >
+<div id="loader">
+  <div class="loader-item"> <img src="img/logo_intro.png" alt="">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+</div>
+<div id="wrapper">
+	<div class="modal fade w3layouts agileits features-modal" id="job-seeker-disc" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog w3layouts agileits" style="width: 350px;">
+			<div class="modal-content w3layouts agileits">
+				<div class="modal-header w3layouts agileits">
+					<button type="button" class="close w3layouts agileits" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title w3layouts agileits">Please Provide your details.</h4>
+				</div>
+				<div class="modal-body w3layouts agileits">
+					<div class="group">
+						<input type="text" id="firstName" name="firstName" required />
+						<label>First Name *</label>
+						<p style="display: none">Enter First Name </p>
+					</div>
+					<div class="group">
+						<input type="text" id="lastName" name="lastName" required />
+						<label>Last Name *</label>
+						<p style="display: none">Enter Last Name </p>
+					</div>
+					<div style="padding-left: 5px; padding-bottom: 20px;display: inline-block; width: 310px; font-size: 16px;">
+						Gender * &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+						<div class="md-radio">
+							<input type="radio" id="gender-male" name="gender" class="md-radiobtn" checked value="Male" />
+							<label for="gender-male" style="color: #9b9b9b; font-weight: 400">
+								<span class="inc"></span>
+								<span class="check"></span>
+								<span class="box"></span> Male
+							</label>
+						</div>
+						<div class="md-radio">
+							<input type="radio" id="gender-female" name="gender" class="md-radiobtn" value="Female" />
+							<label for="gender-female" style="color: #9b9b9b; font-weight: 400">
+								<span class="inc"></span>
+								<span class="check"></span>
+								<span class="box"></span> Female
+							</label>
+						</div>
+					</div>
+					<div class="group">
+						<input type="text" id="email" name="email" required />
+						<label>Email</label>
+					</div>
+					<div class="group" id="userMobileGroup">
+						<input type="text" id="phone" name="phone" required style="padding-left: 35px;" maxlength=10 onkeypress='return (event.keyCode == 8 || (event.charCode >= 48 && event.charCode <= 57))' />
+						<label>Mobile No*</label>
+						<span style="display:none">+91</span>
+						<p style="display: none">Enter Valid Mobile Number </p>
+					</div>
+					<div class="group">
+						<span style="font-size: 15px; color: #9b9b9b; font-weight: 700"> Preferred Jobs *</span>
+						<select name="preferredJobs" id="preferredJobs" multiple style="width: 310px; height: 40px; border: 0px;">
+							<option value="Bartender" >Bartender</option>
+							<option value="Bar Manager" >Bar Manager</option>
+							<option value="Busser" >Busser</option>
+							<option value="Butler" >Butler</option>
+							<option value="Captain" >Captain</option>
+							<option value="Cashier" >Cashier</option>
+							<option value="Chef de Partis" >Chef de Partis</option>
+							<option value="Commis" >Commis</option>
+							<option value="Concierge" >Concierge</option>
+							<option value="Executive/Master Chef" >Executive/Master Chef</option>
+							<option value="Executive Sous Chef/Chef De Cusine" >Executive Sous Chef/Chef De Cusine</option>
+							<option value="F&amp;B Manager" >F&amp;B Manager</option>
+							<option value="General Manager" >General Manager</option>
+							<option value="Guest Service Agent" >Guest Service Agent</option>
+							<option value="Head/VP/GM - Accounts" >Head/VP/GM - Accounts</option>
+							<option value="Head/VP/GM - Food &amp; Beverages" >Head/VP/GM - Food &amp; Beverages</option>
+							<option value="Head/VP/GM - Sales" >Head/VP/GM - Sales</option>
+							<option value="Host/Hostess" >Host/Hostess</option>
+							<option value="Housekeeping Executive/Assistant" >Housekeeping Executive/Assistant</option>
+							<option value="Housekeeping Manager" >Housekeeping Manager</option>
+							<option value="Lobby/Duty Manager" >Lobby/Duty Manager</option>
+							<option value="Night Manager" >Night Manager</option>
+							<option value="Pastry Chef" >Pastry Chef</option>
+							<option value="Restaurant Manager" >Restaurant Manager</option>
+							<option value="Sous Chef" >Sous Chef</option>
+							<option value="Staff Function" >Staff Function</option>
+							<option value="Steward" >Steward</option>
+							<option value="Waiter/Waitress/Sommelier" >Waiter/Waitress/Sommelier</option>
+						</select>
+						<p style="display: none">Select atleast one Preferred Job</p>
+					</div>
+					<div class="group">
+						<input type="text" id="currentSalary" name="currentSalary" onkeypress='return (event.keyCode == 8 || (event.charCode >= 48 && event.charCode <= 57))' required />
+						<label>Current Salary(Rs/Month) *</label>
+						<p style="display: none">Enter Current Salary </p>
+					</div>
+					<div class="group">
+						<input type="text" id="desiredSalary" name="desiredSalary" required onkeypress='return (event.keyCode == 8 || (event.charCode >= 48 && event.charCode <= 57))' />
+						<label>Desired Salary(Rs/Month) *</label>
+						<p style="display: none">Enter Desired Salary </p>
+					</div>
+					<div class="group">
+						<span style="font-size: 15px; color: #9b9b9b; font-weight: 700">Highest Education Level</span>
+						<select name="highestEducation" id="highestEducation" style="width: 310px; height: 40px; border: 0px;">
+							<option value="Less than 5th Standard" >Less than 5th Standard</option>
+							<option value="5th Standard" >5th Standard</option>
+							<option value="8th Standard" >8th Standard</option>
+							<option value="10th Standard" >10th Standard</option>
+							<option value="10th + PUC/12th Standard" >10th + PUC/12th Standard</option>
+							<option value="Diploma" >Diploma</option>
+							<option value="Bachelors" >Bachelors</option>
+							<option value="Masters" >Masters</option>
+							<option value="PhD" >PhD</option>
+							<option value="Post Doctorate" >Post Doctorate</option>
+						</select>
+					</div>
+					<div class="group">
+						<input type="text" id="course" name="course" required />
+						<label>Course</label>
+					</div>
+					
+					<div class="group" style="margin-bottom: 60px">
+						<span style="font-size: 15px; color: #9b9b9b; font-weight: 700"> Preferred Locations *</span>
+						<select name="prefereedLocations" id="preferredLocations" multiple style="width: 310px; height: 40px; border: 0px;">
+							<option value="Jayanagar" >Jayanagar</option>
+							<option value="JP Nagar" >JP Nagar</option>
+							<option value="Electronic City" >Electronic City</option>
+							<option value="HSR" >HSR</option>
+							<option value="Koromangla" >Koromangla</option>
+							<option value="Frazer Town" >Frazer Town</option>
+							<option value="Kammanahali" >Kammanahali</option>
+							<option value="New Bel Road" >New Bel Road</option>
+							<option value="Hebbal" >Hebbal</option>
+							<option value="Jallahalli" >Jallahalli</option>
+							<option value="Indiranagar" >Indiranagar</option>
+							<option value="Whitefield" >Whitefield</option>
+							<option value="Marathahalli" >Marathahalli</option>
+							<option value="KR Puram" >KR Puram</option>
+							<option value="MG Road" >MG Road</option>
+							<option value="Shivaji Nagar" >Shivaji Nagar</option>
+							<option value="Shanti Nagar" >Shanti Nagar</option>
+							<option value="Ulsoor" >Ulsoor</option>
+							<option value="Malleshwaram" >Malleshwaram</option>
+							<option value="Basveshwarnagar" >Basveshwarnagar</option>
+							<option value="Vijay Nagar" >Vijay Nagar</option>
+							<option value="Yeshwantapur" >Yeshwantapur</option>
+						</select>
+						<p style="display: none">Select atleast one Preferred Location.</p>
+					</div>
+					<button id="submit" style="width: 350px;height: 45px;font-size: 17px;left: -1px;border-radius: 0px 0px 7px 7px;bottom: 0px;position: absolute;border: 0px;font-weight: 700;color: #ffffff;box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.2);background-color: rgb(193, 22, 24);">SUBMIT</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+  <section data-scroll-index="0" class="video-full dark fullheight">
+    <div class="video-content" style="top: 45%;">
+      <ul class="text-rotator">
+        <li>
+          <h3>The Better way to hire and get hired in hospitality industry</h3>
+        </li>
+		<li>
+          <h3>The Better way to hire and get hired in hospitality industry</h3>
+        </li>
+		<li>
+          <h3>The Better way to hire and get hired in hospitality industry</h3>
+        </li>
+      </ul>
+	  <i class="icon-home-ico"></i>
+      <p class="mt30 font2" style="margin-top: 10px !important;">Become part of the future of hospitality</p>
+	  <button id="job-seeker" class="btn btn-danger" data-toggle="modal" data-target="#job-seeker-disc"> JOB SEEKER </button>
+	  <button id="employer" class="btn btn-danger" style="margin-left: 20px;"> EMPLOYERS </button>
+    </div>
+    <a data-scroll-nav="1" href="#" class="go-down"><i class="fa fa-angle-double-down"></i></a>
+    <div class="video-wrap">
+      <video poster="img/videos/explore-poster.jpg" preload="auto" loop autoplay muted>
+        <source src='img/videos/explore.mp4' type='video/mp4' />
+        <source src='img/videos/explore.webm' type='video/webm' />
+      </video>
+      <div class="video-overlay" style="background-color: rgba(0,0,0,0.3);"></div>
+    </div>
+  </section>
+  <header id="header" class="header-transparent sticky-onepage">
+    <div class="container">
+      <div class="row">
+        <div id="main-menu-trigger"><i class="fa fa-bars"></i></div>
+        <div id="logo"> <a data-scroll-goto="0" href="#" class="light-logo"><img src="img/logo.png" alt="Logo"></a> <a data-scroll-goto="0" href="#" class="dark-logo"><img src="img/logo_dark.png" alt="Logo"></a> </div>
+      </div>
+    </div>
+  </header>
+  <!--  scroll to top of the page-->
+  <a href="#" id="scroll_up" ><i class="fa fa-angle-up"></i></a> 
+</div>
+<!-- End wrapper -->
+<!-- Core JS Libraries -->
+<script src="javascripts/libs/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="javascripts/select2.min.js"></script>
+<script type="text/javascript" src="javascripts/nicescroll.min.js"></script>
+<script src="javascripts/libs/plugins.js"></script>
+<!-- JS Plugins -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="javascripts/libs/modernizr.js"></script>
+<!-- for this page only JS -->
+<script src="https://maps.googleapis.com/maps/api/js?key=&amp;sensor=false&amp;extension=.js"></script>
+<!-- JS Custom Codes -->
+<script src="javascripts/custom/main.js" ></script>
+<script>
+	$(document).ready(function(){
+		if(window.innerWidth > 991) {
+			$('#job-seeker-disc').niceScroll({styler:"fb",cursorcolor:"#9b9b9b", autohidemode: false, cursorwidth: '6', cursorborderradius: '0px', background: '#2b2b2b', spacebarenabled:false, cursorborder: '0'});
+		}
+		$("#preferredJobs, #highestEducation, #preferredLocations").select2();
+		
+		var formData = {};
+		function validateForm() {
+			var valid = true;
+			$('.group input').each(function() {
+				if(!$(this).val()) {
+					if($(this).attr("id") != "email" && $(this).attr("id") != "course" && $(this).parents('.select2').length == 0) {
+						$(this).focus();
+						var ps = $(this).siblings('p');
+						ps.fadeIn();
+						setTimeout(function(){
+							ps.fadeOut();
+						}, 2000);
+						valid = false;
+						return false;
+					}
+				} else if($(this).attr("id") == "phone") {
+					if($(this).val().length != 10) {
+						$(this).focus();
+						var ps = $(this).siblings('p');
+						ps.fadeIn();
+						setTimeout(function(){
+							ps.fadeOut();
+						}, 2000);
+						valid = false;
+						return false;
+					} else {
+						formData[$(this).attr("id")] = $(this).val();
+					}
+				} else if($(this).parents('select2').length == 0) {
+					formData[$(this).attr("id")] = $(this).val();
+				}
+			});
+			if(!valid) {
+				return false;
+			}
+			if(!$('#preferredJobs').val()) {
+				$('#preferredJobs').focus();
+				var ps = $('#preferredJobs').siblings('p');
+				ps.fadeIn();
+				setTimeout(function(){
+					ps.fadeOut();
+				}, 2000);
+				valid = false;
+				return false;
+			} else {
+				formData['preferredJobs'] = $('#preferredJobs').val();
+			}
+			
+			if(!$('#preferredLocations').val()) {
+				$('#preferredLocations').focus();
+				var ps = $('#preferredLocations').siblings('p');
+				ps.fadeIn();
+				setTimeout(function(){
+					ps.fadeOut();
+				}, 2000);
+				valid = false;
+				return false;
+			} else {
+				formData['preferredLocations'] = $('#preferredLocations').val();
+			}
+			
+			formData["gender"] = $('#gender-male').prop("checked") ? "Male": "Female";
+			formData["highestEducation"] = $('#highestEducation').val();
+			return true;
+		}
+		$('#submit').bind("click", function(e){
+			if(!validateForm())
+				return;
+
+			$.ajax({
+                type: "POST",
+                data: formData,
+                url: "jobseeker.php",
+                success: function(res, status){
+					if(res == "Inserted Successfully") {
+						$('.modal').hide();
+						alert("Your details are submitted successFully !!");
+					}
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+		});
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> PWA CHAT </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="/css/chat.css" rel='stylesheet' type='text/css' />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+<script src="/libs/jQuery/jquery-3.2.1.min.js"></script>
+<link rel='stylesheet prefetch' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+<script src="/libs/socket/socket.io.min.js"></script>
+<script type="text/javascript" src="/libs/nicescroll/nicescroll.min.js"></script>
+<script src="/libs/angular-1.6.4/angular.min.js"></script>
+<script src="/libs/angular-1.6.4/angular-sanitize.min.js"></script>
+<script src="https://cdn.rawgit.com/Luegg/angularjs-scroll-glue/master/src/scrollglue.js"></script>
+<script type="text/javascript">
+	var user = <%- JSON.stringify(user) %>;
+	$(document).ready(function(e) {
+		$('#chat-container').niceScroll({styler:"fb",cursorcolor:"#dadada", autohidemode: false, cursorwidth: '6', cursorborderradius: '0px', spacebarenabled:false, cursorborder: '0'});
+		$('#chatrooms-div').niceScroll({styler:"fb",cursorcolor:"#55bafd", autohidemode: false, cursorwidth: '6', cursorborderradius: '0px', spacebarenabled:false, cursorborder: '0'});
+		$('#cr-panel-infos').niceScroll({styler:"fb",cursorcolor:"#dcdcdc", autohidemode: false, cursorwidth: '6', cursorborderradius: '0px', spacebarenabled:false, cursorborder: '0'});
+	})
+</script>
+<script src="/js/chat.js"></script>
+</head>
+
+<body ng-app="chatApp" style="overflow:hidden">
+<div id="ajax-popup-bg" style="position:fixed; top: 0px;width:100%; height:100%; z-index: 5040; background-color: rgba(0,0,0, 0.8); display: none"></div>
+	<div class="spinner" style="display: none">
+	<div class="ball"></div>
+	<p>SUBMITTING</p>
+</div>
+<div id="chatBox" ng-controller="chatCtl">
+	<div id="container">
+		<div id="side-panel">
+			<div id="side-panel-header">
+				<div id="avatar">
+					<img src="{{user.avatarUrl ? user.avatarUrl : '/images/avatar.png'}}" width="100%" height="100%" style="border-radius: 50%" /> 
+				</div>
+			</div>
+			<div id="side-panel-container">
+				<div id="chatroom-search-box" ng-class="{crfocus: crfocus}">
+					<input type="text" id="chatRoomSearch" placeholder="Search" ng-model="crtext" ng-focus="crfocus=true" ng-blur="crfocus=false" />
+					<i class="fa fa-search" id="searchIcon"></i>
+					<i class="fa fa-arrow-left" id="backIcon" style="display: none; color: red; font-size: 18px; top: 16px;"></i>
+				</div>
+				<div id="chatrooms-div">
+					<div class="default-chatroom chatroom" ng-class="{activeCR: cr._id == currCR._id, pendingCRMsg: cr.lastMsg.pending > 0}" ng-repeat="cr in chatRooms | filter: chatRoomsFilter" ng-cloak ng-click="chatRoomClicked(cr)" >
+						<div class="cr-avatar" ng-class="{'fa fa-users': !cr.avatarUrl}"></div>
+						<div class="cr-info">
+							<label class="cr-name">{{cr.name}}</label>
+							<div class="cr-last-msg">
+								<span>{{cr.lastMsg.msg}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="main-panel">
+			<div id="main-panel-header">
+				<div id="chatRoomInfo">
+					<div ng-if="currCR._id" ng-cloak ng-click="showCRInfo()">
+						<div class="cr-avatar" ng-class="{'fa fa-users': !currCR.avatarUrl}" style="margin-top: -5px;"></div>
+						<label class="cr-name" style="display: inline-block;margin-left: 10px;font-size: 18px;">{{currCR.name}}</label>
+						<div class="cr-users">
+							<span>Tap for Group Info</span>
+							<!--<span ng-repeat="cru in currCR.users" ng-cloak>{{cru.phone}} ~{{cru.name}}<span ng-if="$index < (currCR.users.length - 1)">, </span></span> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="chat-container" scroll-glue force-glue>
+				<div id="default-app-info">
+					
+				</div>
+				<div ng-repeat="msg in allMessages" class="messages" ng-class="{rightAlign: msg.user.phone == user.phone}" ng-cloak >
+					<div style="position: relative;" ng-class="{repeatedUser: isRepeatedUserMsg($index)}"><span class="senderInfo" ng-if="msg.user.phone != user.phone"><b ng-style="{color: user.theme.tc}">+{{msg.user.phone}}</b> ~{{msg.user.name}}<br></span>{{msg.msg}}<span class="chat-arrow"></span></div>
+					<div style="clear: both; padding: 0px;" ></div>
+				</div>
+			</div>
+			<div id="chat-input-box" ng-if="currCR._id">
+				<div id="input-box">
+					<input type="text" name="chatMsg" id="chatMsg" ng-model="chat.currMsg" placeholder="Type a message" ng-keypress="sendMsg($event)" />
+				</div>
+			</div>
+		</div>
+		<div id="cr-panel">
+			<div id="cr-panel-header">
+				<i class="fa fa-times" ng-click="closeCRPanel()"></i><span ng-if="currCR.type == 0">Group Info</span><span ng-if="currCR.type == 1">Contact Info</span>
+			</div>
+			<div id="cr-panel-infos">
+				<div id="cr-panel-avatar" style="height: 225px; position: relative; text-align: center; border-bottom: 1px solid #efefef">
+					<div class="cr-avatar" ng-class="{'fa fa-users': !crDetails.avatarUrl}" style="margin-top: -5px;"></div>
+					<label style="margin-top: 175px;font-size: 24px;display: inline-block; color: #37dc27;">{{crDetails.name}}</label>
+				</div>
+				<div id="cr-panel-participants">
+					<label id="cr-plabel">Participants</label>
+					<div class="cr-panel-users" ng-repeat="cru in crDetails.users">
+						<div class="cr-user-avatar" ng-class="{'fa fa-user': !cru.avatarUrl}"></div>
+						<div class="cr-user-info">
+							<label class="cr-panel-user ng-binding">{{cru.phone}} ~{{cru.name}}</label>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

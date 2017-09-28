@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+	<head>
+		<title>F&B Careers</title>
+		<meta http-equiv="content-type" content="text/html;charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+		<link rel="stylesheet" href="css/ionicons.min.css" type="text/css">
+		<link rel="stylesheet" href="css/animate.min.css" type="text/css">
+		<link rel="stylesheet" href="css/flexslider.css" type="text/css">
+		<link rel="stylesheet" href="css/swiper.min.css" type="text/css">
+		<link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+		<link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+		<link rel="stylesheet" href="css/select2.min.css">
+		<link rel="stylesheet" href="css/vegas.min.css">
+
+		<link rel="stylesheet" href="css/custom.css">
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic%7CRoboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="js/modernizr.js"></script>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+
+	</head>
+	<body class="smooth-scroller">
+		<div id="preloader">
+			<div id="loading-animation"></div>
+		</div>
+
+		<div class="modal fade modal-scroll" id="signup-disc" tabindex="-1" role="dialog" aria-labelledby="myMsgLabel" aria-hidden="true">
+			<div class="modal-dialog modal-full" style="width: 350px">
+				<div class="modal-content"  style="border-radius: 5px;">
+					<button id="aeb-close"></button>
+					<div class="modal-body" id="signup-div" style="position: relative; padding: 0px;">
+						<div id="aeb-header"><label></label></div>
+						<div id="aem-menuC">
+							<div class="group">
+								<input type="text" id="brand-title" ng-model="brand.name" required />
+								<label>Brand Name *</label>
+								<p class="invalidN">Please Enter Brand Name</p>
+								<p class="alreadyExist">Brand Name already Exists</p>
+							</div>
+							<textarea rows="3" cols="50" placeholder="Brand description (optional)" class="form-control" id="ctg-desc" onfocus="this.placeholder = ''" onblur="this.placeholder ='Brand description (optional)'"ng-model="brand.description"></textarea>
+							<div class="group">
+								<input type="text" id="brand-sortOrder" ng-model="brand.sort_order" required />
+								<label>Sort Order *</label>
+								<p class="invalidSO">Please Enter Sort Order</p>
+							</div>
+							<div class="group" style="text-align: center; position: relative;">
+								<input type="text" id="brand-image" ng-model="brand.image" value="{{brand.image}}" pattern="https?://.+" required  style="padding-right: 50px" />
+								<label>Brand Image</label>
+								<button id="imguploadBtn" ng-click="uploadImg()" style="position: absolute;top: 5px;height: 30px; width: 35px; right: 0px;border: 0px; background-color: transparent; color: #4a4a4a; font-size: 23px;" ><i class="icon-cloud-upload"></i></button>
+								<input class="upload-img-file form-control" style="display: none" type="file" name="files" accept="image/*" onchange="angular.element(this).scope().ImgUpload(event)" />
+								<p id="imageAlert" style="position: absolute; top: 37px; font-size: 12px;">Uploading..</p> 
+							</div>
+							<div class="group">
+								<input type="text" id="brand-seo" ng-model="brand.seo_keyword" required />
+								<label>SEO Keyword</label>
+							</div>
+						</div>
+					</div>
+					<button id="save-menu" ng-click="saveBrand()">ADD NOW</button>
+				</div>
+			</div>
+        </div>
+		<div class="main-container">
+			<header class="main-header style-1 transparent">
+				<div class="header-wrapper">
+					<nav class="header-nav light">
+						<div class="nav-wrapper">					
+							<div class="container-fluid">
+								<div class="nav-block left block-widgets">
+									<button type="button" class="nav-toggle">
+										<i class="ion-navicon"></i>
+									</button>
+									<div class="header-logo">
+										<a href="index.html">
+											<img src="images/logo-light.png" class="logo-light" alt="">
+											<img src="images/logo-dark.png" class="logo-dark" alt="">
+										</a>
+									</div>
+								</div>
+								<div class="nav-block right block-menu">
+									<ul class="menu">
+										<li><a href="#home" class="scrollto">Home</a></li>
+										<li><a href="#about" class="scrollto">About</a></li>
+										<li style="margin-right: 0px;"><button class="btn btn-shadow btn-rounded btn-red headerBtn">LOGIN</button></li>
+										<li><button class="btn btn-shadow btn-rounded btn-red headerBtn" data-toggle="modal" data-target="#signup-disc" >JOIN NOW</button></li>
+									</ul>
+								</div>
+							</div>
+						</div>	
+					</nav>
+				</div>
+			</header>
+			<section id="home" class="intro-section fullscreen-element text-center">
+				<div class="overlay">
+					<div class="overlay-wrapper">
+						<div class="overlay-inner cover-background on-mobile" style="background-image: url('demo/images/image-7.jpg');"></div>
+						<div class="overlay-inner overlay-video">
+							<!-- Video -->
+							<div class="video-wrapper">
+								<video autoplay muted loop>
+									<source src="demo/video/explore.webm" type="video/webm">
+									<source src="demo/video/explore.mp4" type="video/mp4">
+									<source src="demo/video/explore.ogv" type="video/ogg">
+								</video>
+							</div>
+						</div>
+						<div class="overlay-inner background-dark-5 opacity-50"></div>
+					</div>
+				</div>
+				<div class="table-container">
+					<div class="table-content">
+						<div class="container">
+							<div class="bt-flexslider" data-effect="fade" data-pagination="false" data-directionnav="false">
+								<div class="slides">
+									<div class="flex-slide">
+										<h2 class="text-white font-thin">THE BETTER WAY TO HIRE AND GET HIRED IN HOSPITALITY INDUSTRY</h2>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<section id="about" class="section">
+				<div class="container">
+					<h3 class="text-center">Services</h3>
+					<div class="divider divider-center divider-dark"></div>
+					<p class="text-center mb-50">We provide a network of hospitality venues and quality staff connected through a web and mobile app.
+				Using technology, we match skilled, experienced staff to jobs in restaurants, hotels and caterers,
+				while offering better working conditions, value and quality.</p>
+					<div class="row">
+						
+						<div class="col-md-4">
+							<div class="icon-box animate-divider mb-30">
+								<div class="box-container">
+									<div class="icon-box-icon circle">
+										<div class="icon-container">
+											<i class="ion-ios-book-outline"></i>
+										</div>
+									</div>
+									<h3>Well Documented</h3>
+									<div class="divider divider-center divider-dark"></div>
+									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="icon-box animate-divider mb-30">
+								<div class="box-container">
+									<div class="icon-box-icon circle">
+										<div class="icon-container">
+											<i class="ion-ios-speedometer-outline"></i>
+										</div>
+									</div>
+									<h3>Fast & Easy</h3>
+									<div class="divider divider-center divider-dark"></div>
+									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="icon-box animate-divider mb-30">
+								<div class="box-container">
+									<div class="icon-box-icon circle">
+										<div class="icon-container">
+											<i class="ion-ios-settings"></i>
+										</div>
+									</div>
+									<h3>Fully Customizable</h3>
+									<div class="divider divider-center divider-dark"></div>
+									<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="icon-box animate-divider sm-mb-30">
+								<div class="box-container">
+									<div class="icon-box-icon circle">
+										<div class="icon-container">
+											<i class="ion-ios-photos-outline"></i>
+										</div>
+									</div>
+									<h3>Parallax Background</h3>
+									<div class="divider divider-center divider-dark"></div>
+									<p class="text-center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="icon-box animate-divider sm-mb-30">
+								<div class="box-container">
+									<div class="icon-box-icon circle">
+										<div class="icon-container">
+											<i class="ion-ios-monitor-outline"></i>
+										</div>
+									</div>
+									<h3>Responsive Layout</h3>
+									<div class="divider divider-center divider-dark"></div>
+									<p class="text-center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="icon-box animate-divider">
+								<div class="box-container">
+									<div class="icon-box-icon circle">
+										<div class="icon-container">
+											<i class="ion-ios-cart-outline"></i>
+										</div>
+									</div>
+									<h3>Ecommerce Ready</h3>
+									<div class="divider divider-center divider-dark"></div>
+									<p class="text-center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+								</div>
+							</div>
+						</div>
+										
+					</div>
+				</div>
+			</section>
+			
+			<section class="section background-grey">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1 text-center">
+							<span class="alt-font">Michelangelo Buonarroti</span>
+							<h3 class="mb-0">"Trifles make perfection, and perfection is no trifle"</h3>
+						</div>
+					</div>
+				</div>
+			</section>		
+			<section class="section background-black text-center">
+				<div class="container-fluid">
+					<div class="bt-owl-carousel owl-carousel" data-items-lg="7" data-items-md="4" data-items-sm="2" data-items-xs="1" data-pagination="false" data-navigation="false" data-autoplay="true">
+					
+						<div class="carousel-item client">
+							<img src="demo/images/clients/client-1.png" alt="">
+						</div>
+						
+						<div class="carousel-item client">
+							<img src="demo/images/clients/client-2.png" alt="">
+						</div>
+						
+						<div class="carousel-item client">
+							<img src="demo/images/clients/client-3.png" alt="">
+						</div>
+						
+						<div class="carousel-item client">
+							<img src="demo/images/clients/client-4.png" alt="">
+						</div>
+						
+						<div class="carousel-item client">
+							<img src="demo/images/clients/client-5.png" alt="">
+						</div>
+						
+						<div class="carousel-item client">
+							<img src="demo/images/clients/client-6.png" alt="">
+						</div>
+						
+						<div class="carousel-item client">
+							<img src="demo/images/clients/client-7.png" alt="">
+						</div>
+						
+						<div class="carousel-item client">
+							<img src="demo/images/clients/client-8.png" alt="">
+						</div>
+
+					</div>
+				</div>
+			</section>
+			<footer class="site-footer section pb-0 background-grey">
+				<div class="copyright background-white">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-6 col-sm-6 text-left">
+							© 2016 Nantria - All Rights Reserved
+							</div>
+							<div class="col-md-6 col-sm-6">
+								<nav class="socials-icons pull-right">
+									<ul>
+										<li><a href="#" class="social-icon social-clear"><i class="ion-social-facebook"></i></a></li>
+										<li><a href="#" class="social-icon social-clear"><i class="ion-social-twitter"></i></a></li>
+										<li><a href="#" class="social-icon social-clear"><i class="ion-social-googleplus"></i></a></li>
+										<li><a href="#" class="social-icon social-clear"><i class="ion-social-pinterest"></i></a></li>
+										<li><a href="#" class="social-icon social-clear"><i class="ion-social-dribbble-outline"></i></a></li>
+									</ul>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div><!-- .copyright end -->
+			</footer><!-- .site-footer end -->
+			
+			<a class="backToTop scrollto" href="#"><i class="fa fa-angle-up"></i></a>
+			
+		</div>
+
+		<!-- JS -->
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/plugins.js"></script>
+
+		<script type="text/javascript" src="js/main.js"></script>
+
+	</body>
+</html>
